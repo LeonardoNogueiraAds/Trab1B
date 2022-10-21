@@ -33,13 +33,26 @@ b.addEventListener('click', function(event){
     }else if(evento.eventoEscolhido=='Ligar a lanterna'){
         acenderLanterna(b,evento)
     }
-
     //----Evento3------------------------------------------
 
     if(evento.eventoEscolhido=='Se entregar para a morte certa'){
         foiPego(b,evento);
+    }else if(evento.eventoEscolhido=='Jogar a lanterna no mato'){
+        jogarLanterna(b,evento)
+    }else if(evento.eventoEscolhido=='Correr com a lanterna ligada'){
+        correrLanterna(b,evento)
     }
     //-----------------------------------------------------
+    //-----Evento4-------------------------------------------
+    if(evento.eventoEscolhido=='Correr'){
+        escuro(b,evento);
+    }else if(evento.eventoEscolhido=='Continuar a andar pela estrada cautelosamente'){
+        sairInnsmouth(b,evento);
+
+    }else if(evento.eventoEscolhido=='Continuar segurando a lanterna'){
+        foiPego(b,evento);
+    }
+    //-------------------------------------------------
     event.preventDefault;
 })
 
@@ -77,7 +90,6 @@ function foiPego(b,evento){
    // b[2].innerHTML="Permanecer a onde esta";
 
 }
-
 function voltaEvento1(b,evento){
     const paragrafoCel=document.createElement('p');
     paragrafoCel.innerText='Você voltou para tras da arvore morta. O que irá fazer?';
@@ -86,28 +98,50 @@ function voltaEvento1(b,evento){
     seleButton[1].innerText="Você segue pela estrada";
     seleButton[2].innerText="Você fica onde esta";
 }
-
 function escuro(b,evento){
     const paragrafoCel=document.createElement('p');
-    paragrafoCel.innerText='Você não viu por onde estava indo, caiu em uma vala e foi ferido mortalmente';
+    paragrafoCel.innerText='Estava escuro e você não viu por onde estava indo, caiu em uma vala e foi ferido mortalmente';
     div.insertBefore(paragrafoCel,seleButton[0]);
     seleButton[0].innerText="------>";
     seleButton[1].setAttribute('onclick',"window.print()");
     seleButton[1].innerText='Imprimir';
     seleButton[2].innerText="<------";
-
 }
 
 function acenderLanterna(b,evento){
     const paragrafoCel=document.createElement('p');
-    paragrafoCel.innerText='A luz atraiu os seres em sua direção, eles começaram a correr em direção a luz. Você tem que decidir rapido:';
+    paragrafoCel.innerText='A luz da lanterna atraiu os seres em sua direção. Você tem que decidir rapido:';
     div.insertBefore(paragrafoCel,seleButton[0]);
     seleButton[0].innerText="Jogar a lanterna no mato";
     seleButton[1].innerText="Correr com a lanterna ligada";
     seleButton[2].innerText="Se entregar para a morte certa";
-
+}
+function jogarLanterna(b,evento){
+    const paragrafoCel=document.createElement('p');
+    paragrafoCel.innerText='Quando você jogou a lanterna as criaturas acompanharam a luz. Parabéns, você ganhou tempo';
+    div.insertBefore(paragrafoCel,seleButton[0]);
+    seleButton[0].innerText="Continuar a andar pela estrada cautelosamente";
+    seleButton[1].innerText="Correr";
+    seleButton[2].innerText="Você fica onde esta";
+}
+function correrLanterna(b,evento){
+    const paragrafoCel=document.createElement('p');
+    paragrafoCel.innerText='As criaturas estão indo em sua direção e uma velocidade surpreendente por causa da luz da lanterna. Rapido, jogue a lanterna no mato!!';
+    div.insertBefore(paragrafoCel,seleButton[0]);
+    seleButton[0].innerText="Jogar a lanterna no mato";
+    seleButton[1].innerText="Continuar segurando a lanterna";
+    seleButton[2].innerText="Você fica onde esta";
 }
 
+function sairInnsmouth(b,evento){
+    const paragrafoCel=document.createElement('p');
+    paragrafoCel.innerText='Parabéns,ao caminhar cautelosamente voce conseguiu sair de Innsmouth';
+    div.insertBefore(paragrafoCel,seleButton[0]);
+    seleButton[0].innerText="------>";
+    seleButton[1].setAttribute('onclick',"window.print()");
+    seleButton[1].innerText='Imprimir';
+    seleButton[2].innerText="<------";
+}
 
 
 
